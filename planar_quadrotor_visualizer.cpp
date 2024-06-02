@@ -22,20 +22,16 @@ void PlanarQuadrotorVisualizer::render(std::shared_ptr<SDL_Renderer> &gRenderer,
     SDL_SetRenderDrawColor(gRenderer.get(), 0xFF, 0x00, 0x00, 0xFF);
     //filledCircleColor(gRenderer.get(), q_x, q_y, 30, 0xFF0000FF);
     unsigned int distance = 80, h = 50, num=30, lenght=35;
-    SDL_Rect r;
-    r.x = q_x-distance*cos(q_theta);
-    r.y = q_y;
-    r.w = 156;
-    r.h = 18;
+    
 
     //SDL_RenderFillRect( gRenderer.get(), &r);
     //SDL_RenderPresent(gRenderer.get());
 
     thickLineColor(gRenderer.get(),
-    q_x + cos(q_theta),
-    q_y - sin(q_theta),
-    q_x + cos(q_theta) + 10*h * sin(q_theta),
-    q_y - sin(q_theta) + 0.5*h * cos(q_theta)-lenght,30 , 0xFF000000);
+    q_x - distance*cos(q_theta),
+    q_y + distance*sin(q_theta),
+    q_x + distance*cos(q_theta),
+    q_y - sin(q_theta) - h * cos(q_theta-M_PI/2), 10 , 0xFF000000);
 
     thickLineColor(gRenderer.get(),
     q_x + distance * cos(q_theta),
